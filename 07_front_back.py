@@ -10,9 +10,24 @@ Exemplo: 'abcde', a metade da frente é 'abc' e a de trás é 'de'.
 Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
+import math
+
+
 def front_back(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    if(len(a) % 2 != 0):
+        meio_a = math.floor(len(a)/2) + 1
+    else:
+        meio_a = math.floor(len(a)/2)
+    if (len(b) % 2 != 0):
+        meio_b = math.floor(len(b) / 2) + 1
+    else:
+        meio_b = math.floor(len(b) / 2)
+
+    a_front = a[:meio_a]
+    a_back = a[meio_a:]
+    b_front = b[:meio_b]
+    b_back = b[meio_b:]
+    return a_front + b_front + a_back + b_back
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
