@@ -10,10 +10,26 @@ A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 """
 
 def linear_merge(list1, list2):
-    # +++ SUA SOLUÇÃO +++
-    return
-
-
+    list3 = []
+    #list1.extend(list2)
+    #list1.sort()
+    #return list1
+    i = 0
+    j = 0
+    while(i < len(list1) or j < len(list2)):
+        if(i >= len(list1)):
+            list3.append(list2[j])
+            j += 1
+        elif(j >= len(list2)):
+            list3.append(list1[i])
+            i += 1
+        elif(list1[i] >= list2[j]):
+            list3.append(list2[j])
+            j += 1
+        else:
+            list3.append(list1[i])
+            i += 1
+    return list3
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
 def test(f, in_, expected):
