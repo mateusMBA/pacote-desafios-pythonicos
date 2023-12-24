@@ -54,12 +54,41 @@ e conferindo cada etapa do seu progresso.
 import sys
 
 
+def print_words(filename):
+    f = open(filename, 'r')
+    words = []
+    words_dict = {}
+    for line in f.readlines():
+        for word in line.split():
+            word = word.lower()
+            if (words_dict.get(word) != None):
+                words_dict[word] = words_dict.get(word) + 1
+            else:
+                words_dict[word] = 1
+
+    words_dict = dict(sorted(words_dict.items(), key = lambda x:x[0]))
+    for word in words_dict.keys():
+        print(f'{word} {words_dict[word]}')
+    return
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+def print_top(filename):
+    f = open(filename, 'r')
+    words = []
+    words_dict = {}
+    for line in f.readlines():
+        for word in line.split():
+            word = word.lower()
+            if (words_dict.get(word) != None):
+                words_dict[word] = words_dict.get(word) + 1
+            else:
+                words_dict[word] = 1
 
+    words_dict = dict(sorted(words_dict.items(), key=lambda x: x[1], reverse=True))
+    for word in words_dict.keys():
+        print(f'{word} {words_dict[word]}')
+    pass
 
-# A função abaixo chama print_words() ou print_top() de acordo com os
-# parêtros do programa.
 def main():
     if len(sys.argv) != 3:
         print('Utilização: ./13_wordcount.py {--count | --topcount} file')
