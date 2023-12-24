@@ -46,13 +46,31 @@ import sys
 def mimic_dict(filename):
   """Retorna o dicionario imitador mapeando cada palavra para a lista de
   palavras subsequentes."""
-    # +++ SUA SOLUÇÃO +++
-  return
+  f = open(filename, 'r')
+  words = []
+  words_dict = {}
+  for line in f.readlines():
+    vetor_frase = line.split()
+    for i in range(len(vetor_frase)):
+      if(words_dict.get('') == None):
+        words_dict[''] = [vetor_frase[i]]
+      if(words_dict.get(vetor_frase[i]) == None):
+        words_dict[vetor_frase[i]] = []
+      if i == len(vetor_frase) - 1:
+        words_dict[vetor_frase[i]].append('')
+      else:
+        words_dict[vetor_frase[i]].append(vetor_frase[i+1])
+  # print(words_dict)
+  return words_dict
 
 
 def print_mimic(mimic_dict, word):
   """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
-    # +++ SUA SOLUÇÃO +++
+
+  for i in range(200):
+    new_word = ''.join(random.choices(mimic_dict[word]))
+    print(new_word, end=' ')
+    word = new_word
   return
 
 
